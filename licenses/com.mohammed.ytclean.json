@@ -1,7 +1,7 @@
 {
   "required": true,
   "message": "للحصول على كود التفعيل تواصل مع المطوّر",
-  "trialMinutes": 10,
+  "trialMinutes": 60,
   "trialHours": 1,
   "info": {
     "name": "Moh Apps Store",
