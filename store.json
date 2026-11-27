@@ -1,7 +1,7 @@
 {
  "store": {
   "storeName": "Moh-Apps-Store",
-  "storeUrl": "https:\/\/mohmmedthabet-glitch.github.io\/Moh-Apps-Store-releases\/",
+  "storeUrl": "https://mohmmedthabet-glitch.github.io/Moh-Apps-Store-releases/",
   "phone": "",
   "whatsapp": "@Moh_Apps_Store",
   "telegram": "@Moh_Apps_Store",
@@ -13,16 +13,16 @@
    "package": "com.mohammed.ytclean",
    "name": "تيوب نظيف",
    "versionName": "2.5",
-   "versionCode": 44,
-   "url": "https:\/\/github.com\/mohmmedthabet-glitch\/Moh-Apps-Store-releases\/releases\/download\/com.mohammed.ytclean-44-r28\/com.mohammed.ytclean-2.5.apk",
-   "time": 1795771665910,
+   "versionCode": 45,
+   "url": "https://github.com/mohmmedthabet-glitch/Moh-Apps-Store-releases/releases/download/com.mohammed.ytclean-45-r29/com.mohammed.ytclean-2.5.apk",
+   "time": 1795772737672,
    "icon": "",
    "desc": "تيوب نظيف — CleanTube\n\nتفرّج على يوتيوب بدون إعلانات على الهاتف والتلفاز، مع تشغيل بالخلفية وصورة داخل صورة.\n\nتيوب نظيف يخليك تتفرج على فيديوهات يوتيوب براحتك بدون إعلانات، ويشتغل على الهاتف والتلفاز بنفس التطبيق.\n\n🚫 بدون إعلانات\n• يحجب إعلانات الفيديو والإعلانات بالصفحة الرئيسية ونتائج البحث.\n• يتخطى فقرات الرعاة داخل الفيديو تلقائياً (SponsorBlock).\n\n📺 على التلفاز مثل تطبيق أصلي\n• واجهة التلفاز الكاملة، وتتحكم بيها بالريموت بشكل طبيعي.\n• بحث بالصوت بضغطة مطولة على زر OK، أو بحث بالكتابة.\n• أيقونة خاصة للإعدادات بقائمة تطبيقات التلفاز.\n\n📱 على الهاتف\n• صورة داخل صورة للفيديو العادي والشورتس، مع أزرار تحكم داخل النافذة.\n• تشغيل بالخلفية: الصوت يكمل لما تقفل الشاشة أو تطلع من التطبيق.\n• تحكم من الإشعار وشاشة القفل وأزرار السماعة.\n• بحث بالصوت أو بالكتابة.\n\n👤 حسابك أو كضيف\n• سجّل دخولك بحساب جوجل من داخل التطبيق، بدون أي تطبيقات إضافية.\n• أو ادخل كضيف مباشرة بدون حساب.\n\n⚙️ إعدادات تتحكم بيها\n• تشغيل كل فيديو بأعلى دقة متوفرة، وتگدر تطفيها.\n• سرعة تشغيل افتراضية.\n• إخفاء الشورتس.\n• اختيار لغة البحث الصوتي: عربي أو إنگليزي.\n• يفتح روابط يوتيوب من أي تطبيق ثاني.\n\n📋 المتطلبات: أندرويد 7 أو أحدث، لهاتف أو تلفاز أندرويد.\n\n⚠️ تيوب نظيف تطبيق مستقل، وغير تابع لشركة جوجل أو يوتيوب، وما مدعوم منهم.",
    "category": "فديوهات يوتيوب",
    "hidden": false,
-   "notes": "تحسينات كثيرة",
+   "notes": "",
    "size": 167518
   }
  ],
- "updated": 1795771766925
+ "updated": 1795772738803
 }
