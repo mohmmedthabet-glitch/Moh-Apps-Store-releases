@@ -4,12 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>المتجر</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<meta name="theme-color" content="#0F1418">
+<meta property="og:title" content="المتجر">
+<meta property="og:description" content="تطبيقات أندرويد جاهزة للتحميل والتحديث">
+<meta property="og:image" content="banner.png">
 <style>
   :root { --bg:#0F1418; --card:#1A2229; --line:#2C3843; --text:#E8EEF2; --muted:#8A99A6; --accent:#2FBF7F; --btn:#26323C; }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--text); font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; }
   header { padding:28px 18px 18px; text-align:center; background:linear-gradient(180deg,#14503A33,transparent); }
   header h1 { margin:0; font-size:28px; }
+  .logo { width:84px; height:84px; border-radius:20px; display:block; margin:0 auto 12px; box-shadow:0 8px 24px #0006; }
   header p { margin:6px 0 0; color:var(--muted); }
   .contacts { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:14px; }
   .contacts a { background:var(--btn); color:var(--text); text-decoration:none; padding:9px 14px; border-radius:12px; font-size:14px; }
@@ -36,6 +43,7 @@
 </head>
 <body>
 <header>
+  <img class="logo" src="logo.png" alt="">
   <h1 id="title">المتجر</h1>
   <p id="sub">تطبيقات أندرويد جاهزة للتحميل</p>
   <div class="contacts" id="contacts"></div>
@@ -74,11 +82,11 @@ function tgName(v) { v = String(v).trim(); if (v.includes("t.me/")) v = v.split(
 function url(v) { return /^https?:\/\//.test(v) ? v : "https://" + v; }
 function header(s) {
   if (!s) return;
-  if (s.storeName) { document.getElementById("title").textContent = "🏪 " + s.storeName; document.title = s.storeName; }
+  if (s.storeName) { document.getElementById("title").textContent = s.storeName; document.title = s.storeName; }
   const c = [];
-  if (s.whatsapp) c.push(`<a href="${esc(waLink(s.whatsapp))}">💬 واتساب ${esc(waLabel(s.whatsapp))}</a>`);
-  if (s.telegram) c.push(`<a href="https://t.me/${esc(tgName(s.telegram))}">✈️ تيليجرام @${esc(tgName(s.telegram))}</a>`);
-  if (s.phone) c.push(`<a href="tel:${esc(String(s.phone).replace(/[^\d+]/g, ""))}">📞 ${esc(s.phone)}</a>`);
+  if (s.whatsapp) c.push(`<a href="${esc(waLink(s.whatsapp))}">💬 واتساب <bdi dir="ltr">${esc(waLabel(s.whatsapp))}</bdi></a>`);
+  if (s.telegram) c.push(`<a href="https://t.me/${esc(tgName(s.telegram))}">✈️ تيليجرام <bdi dir="ltr">@${esc(tgName(s.telegram))}</bdi></a>`);
+  if (s.phone) c.push(`<a href="tel:${esc(String(s.phone).replace(/[^\d+]/g, ""))}">📞 <bdi dir="ltr">${esc(s.phone)}</bdi></a>`);
   if (s.email) c.push(`<a href="mailto:${esc(s.email)}">✉️ الإيميل</a>`);
   if (s.facebook) c.push(`<a href="${esc(/^http/.test(s.facebook) ? s.facebook : "https://facebook.com/" + s.facebook.replace(/^@/, ""))}">📘 فيسبوك</a>`);
   if (s.storeUrl && !location.href.startsWith(url(s.storeUrl))) c.push(`<a href="${esc(url(s.storeUrl))}">🔗 موقعنا</a>`);
