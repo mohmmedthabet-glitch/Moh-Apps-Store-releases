@@ -1,15 +1,16 @@
 {
   "required": true,
   "message": "للحصول على كود التفعيل تواصل مع المطوّر",
-  "trialMinutes": 1440,
-  "trialHours": 24,
+  "trialMinutes": 0,
+  "trialHours": 0,
   "info": {
-    "name": "Moh Apps Store",
+    "name": "Moh-Apps-Store-releases",
     "whatsapp": "07811123116",
     "telegram": "@MohAppsStore",
     "phone": "07811123116",
+    "email": "mohmmedthabet@gmail.com",
     "site": "https:\/\/github.com\/mohmmedthabet-glitch\/Moh-Apps-Store-releases",
-    "note": "تواصل معي"
+    "note": "تواصل مع"
   },
   "revoked": []
 }
