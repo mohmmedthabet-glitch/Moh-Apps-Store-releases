@@ -1,0 +1,26 @@
+{
+ "store": {
+  "storeName": "Moh-Apps-Store",
+  "storeUrl": "https:\/\/github.com\/mohmmedthabet-glitch\/Moh-Apps-Store-releases",
+  "phone": "07811123116",
+  "whatsapp": "07811123116",
+  "email": "mohmmedthabet@gmail.com",
+  "facebook": ""
+ },
+ "apps": [
+  {
+   "package": "com.mohammed.ytclean",
+   "name": "يوتيوب نظيف",
+   "versionName": "2.4",
+   "versionCode": 40,
+   "url": "https:\/\/github.com\/mohmmedthabet-glitch\/Moh-Apps-Store-releases\/releases\/download\/com.mohammed.ytclean-40-r25\/com.mohammed.ytclean-2.4.apk",
+   "time": 1795760353431,
+   "icon": "",
+   "desc": "",
+   "category": "",
+   "hidden": false,
+   "notes": ""
+  }
+ ],
+ "updated": 1795765211866
+}
