@@ -2,8 +2,9 @@
  "store": {
   "storeName": "Moh-Apps-Store",
   "storeUrl": "https:\/\/github.com\/mohmmedthabet-glitch\/Moh-Apps-Store-releases",
-  "phone": "07811123116",
-  "whatsapp": "07811123116",
+  "phone": "",
+  "whatsapp": "@Moh_Apps_Store",
+  "telegram": "@Moh_Apps_Store",
   "email": "mohmmedthabet@gmail.com",
   "facebook": ""
  },
@@ -22,5 +23,5 @@
    "notes": ""
   }
  ],
- "updated": 1795765596889
+ "updated": 1795767455386
 }
