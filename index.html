@@ -53,18 +53,31 @@ let all = [], cat = "";
 const esc = s => String(s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
 const size = b => !b ? "" : (b > 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.round(b / 1024) + " KB");
 const date = t => t ? new Date(t).toLocaleDateString("ar-IQ") : "";
+function isHandle(v) { v = String(v).trim().replace(/^@/, ""); return /\p{L}/u.test(v) && !v.includes("/"); }
 function waLink(v) {
-  let d = String(v).replace(/\D/g, "");
+  v = String(v).trim();
+  if (/^https?:\/\//.test(v)) return v;
+  if (v.startsWith("wa.me/")) return "https://" + v;
+  if (isHandle(v)) return "https://wa.me/" + v.replace(/^@/, "");
+  let d = v.replace(/\D/g, "");
   if (d.startsWith("00")) d = d.slice(2);
   if (d.length === 11 && d.startsWith("07")) d = "964" + d.slice(1);
   return "https://wa.me/" + d;
 }
+function waLabel(v) {
+  v = String(v).trim();
+  if (isHandle(v)) return "@" + v.replace(/^@/, "");
+  if (v.includes("wa.me/")) return "@" + v.split("wa.me/")[1].replace(/\/+$/, "");
+  return v;
+}
+function tgName(v) { v = String(v).trim(); if (v.includes("t.me/")) v = v.split("t.me/")[1]; return v.replace(/^@/, "").replace(/\/+$/, ""); }
 function url(v) { return /^https?:\/\//.test(v) ? v : "https://" + v; }
 function header(s) {
   if (!s) return;
   if (s.storeName) { document.getElementById("title").textContent = "🏪 " + s.storeName; document.title = s.storeName; }
   const c = [];
-  if (s.whatsapp) c.push(`<a href="${esc(waLink(s.whatsapp))}">💬 واتساب</a>`);
+  if (s.whatsapp) c.push(`<a href="${esc(waLink(s.whatsapp))}">💬 واتساب ${esc(waLabel(s.whatsapp))}</a>`);
+  if (s.telegram) c.push(`<a href="https://t.me/${esc(tgName(s.telegram))}">✈️ تيليجرام @${esc(tgName(s.telegram))}</a>`);
   if (s.phone) c.push(`<a href="tel:${esc(String(s.phone).replace(/[^\d+]/g, ""))}">📞 ${esc(s.phone)}</a>`);
   if (s.email) c.push(`<a href="mailto:${esc(s.email)}">✉️ الإيميل</a>`);
   if (s.facebook) c.push(`<a href="${esc(/^http/.test(s.facebook) ? s.facebook : "https://facebook.com/" + s.facebook.replace(/^@/, ""))}">📘 فيسبوك</a>`);
