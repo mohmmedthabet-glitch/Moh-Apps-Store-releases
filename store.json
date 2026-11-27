@@ -10,6 +10,20 @@
  },
  "apps": [
   {
+   "package": "com.mohammed.tvclean",
+   "name": "تلفاز نظيف",
+   "versionCode": 18,
+   "versionName": "3.1",
+   "url": "https://github.com/mohmmedthabet-glitch/Moh-Apps-Store-releases/releases/download/com.mohammed.tvclean-18-r2/com.mohammed.tvclean-3.1.apk",
+   "notes": "",
+   "time": 1795803078579,
+   "size": 189960,
+   "icon": "",
+   "desc": "",
+   "category": "",
+   "hidden": false
+  },
+  {
    "package": "com.mohammed.ytclean",
    "name": "تيوب نظيف",
    "versionName": "2.5",
@@ -24,5 +38,5 @@
    "size": 167518
   }
  ],
- "updated": 1795772738803
+ "updated": 1795803079797
 }
