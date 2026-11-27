@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المتجر</title>
+<style>
+  :root { --bg:#0F1418; --card:#1A2229; --line:#2C3843; --text:#E8EEF2; --muted:#8A99A6; --accent:#2FBF7F; --btn:#26323C; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; }
+  header { padding:28px 18px 18px; text-align:center; background:linear-gradient(180deg,#14503A33,transparent); }
+  header h1 { margin:0; font-size:28px; }
+  header p { margin:6px 0 0; color:var(--muted); }
+  .contacts { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:14px; }
+  .contacts a { background:var(--btn); color:var(--text); text-decoration:none; padding:9px 14px; border-radius:12px; font-size:14px; }
+  .bar { max-width:860px; margin:0 auto; padding:0 16px; }
+  #q { width:100%; padding:13px 14px; border-radius:14px; border:1px solid var(--line); background:#0B1014; color:var(--text); font-size:16px; }
+  .chips { display:flex; gap:8px; overflow-x:auto; padding:12px 0 4px; }
+  .chip { flex:none; padding:7px 14px; border-radius:20px; background:var(--btn); color:var(--text); border:0; font-size:14px; cursor:pointer; }
+  .chip.on { background:var(--accent); color:#fff; }
+  .storeapp { display:none; margin:12px auto 0; max-width:860px; padding:0 16px; }
+  .storeapp a { display:block; text-align:center; background:var(--accent); color:#fff; padding:14px; border-radius:14px; text-decoration:none; font-weight:bold; }
+  main { max-width:860px; margin:0 auto; padding:12px 16px 40px; display:grid; gap:12px; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); }
+  .app { background:var(--card); border-radius:18px; padding:16px; display:flex; flex-direction:column; gap:10px; }
+  .top { display:flex; gap:12px; align-items:center; }
+  .icon { width:60px; height:60px; border-radius:14px; background:#26323C; object-fit:cover; flex:none; display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:bold; color:var(--accent); }
+  .name { font-size:18px; font-weight:bold; }
+  .meta { color:var(--muted); font-size:13px; margin-top:3px; }
+  .desc { color:#C9D4DC; font-size:14px; line-height:1.6; white-space:pre-line; }
+  details { color:var(--muted); font-size:13px; }
+  details summary { cursor:pointer; color:var(--accent); }
+  .dl { display:block; text-align:center; background:var(--accent); color:#fff; text-decoration:none; padding:12px; border-radius:12px; font-weight:bold; margin-top:auto; }
+  .empty { text-align:center; color:var(--muted); grid-column:1/-1; padding:40px 0; }
+  footer { text-align:center; color:var(--muted); font-size:12px; padding:0 0 30px; }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title">المتجر</h1>
+  <p id="sub">تطبيقات أندرويد جاهزة للتحميل</p>
+  <div class="contacts" id="contacts"></div>
+</header>
+<div class="storeapp" id="storeapp"><a id="storeappLink" href="#">📲 حمّل تطبيق المتجر — تثبيت وتحديث كل التطبيقات بسهولة</a></div>
+<div class="bar">
+  <input id="q" placeholder="🔎 ابحث عن تطبيق" autocomplete="off">
+  <div class="chips" id="chips"></div>
+</div>
+<main id="list"><div class="empty">⏳ جاري التحميل…</div></main>
+<footer id="foot"></footer>
+<script>
+const STORE_APP = "app.apkbuilder.store";
+let all = [], cat = "";
+const esc = s => String(s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+const size = b => !b ? "" : (b > 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.round(b / 1024) + " KB");
+const date = t => t ? new Date(t).toLocaleDateString("ar-IQ") : "";
+function waLink(v) {
+  let d = String(v).replace(/\D/g, "");
+  if (d.startsWith("00")) d = d.slice(2);
+  if (d.length === 11 && d.startsWith("07")) d = "964" + d.slice(1);
+  return "https://wa.me/" + d;
+}
+function url(v) { return /^https?:\/\//.test(v) ? v : "https://" + v; }
+function header(s) {
+  if (!s) return;
+  if (s.storeName) { document.getElementById("title").textContent = "🏪 " + s.storeName; document.title = s.storeName; }
+  const c = [];
+  if (s.whatsapp) c.push(`<a href="${esc(waLink(s.whatsapp))}">💬 واتساب</a>`);
+  if (s.phone) c.push(`<a href="tel:${esc(String(s.phone).replace(/[^\d+]/g, ""))}">📞 ${esc(s.phone)}</a>`);
+  if (s.email) c.push(`<a href="mailto:${esc(s.email)}">✉️ الإيميل</a>`);
+  if (s.facebook) c.push(`<a href="${esc(/^http/.test(s.facebook) ? s.facebook : "https://facebook.com/" + s.facebook.replace(/^@/, ""))}">📘 فيسبوك</a>`);
+  if (s.storeUrl && !location.href.startsWith(url(s.storeUrl))) c.push(`<a href="${esc(url(s.storeUrl))}">🔗 موقعنا</a>`);
+  document.getElementById("contacts").innerHTML = c.join("");
+}
+function render() {
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const items = all.filter(a => (!cat || a.category === cat) &&
+    (!q || (a.name || "").toLowerCase().includes(q) || (a.desc || "").toLowerCase().includes(q)));
+  const el = document.getElementById("list");
+  if (!items.length) { el.innerHTML = `<div class="empty">لا توجد تطبيقات</div>`; return; }
+  el.innerHTML = items.map(a => `
+    <div class="app">
+      <div class="top">
+        ${a.icon ? `<img class="icon" src="${esc(a.icon)}?v=${a.versionCode}" alt="" loading="lazy">` : `<div class="icon">${esc((a.name || "?").charAt(0))}</div>`}
+        <div>
+          <div class="name">${esc(a.name)}</div>
+          <div class="meta">الإصدار ${esc(a.versionName)} · ${size(a.size)} · ${date(a.time)}</div>
+        </div>
+      </div>
+      ${a.desc ? `<div class="desc">${esc(a.desc)}</div>` : ""}
+      ${a.notes ? `<details><summary>🆕 شنو الجديد</summary><div class="desc">${esc(a.notes)}</div></details>` : ""}
+      <a class="dl" href="${esc(a.url)}">⬇️ تحميل</a>
+    </div>`).join("");
+}
+function chips() {
+  const cats = [...new Set(all.map(a => a.category).filter(Boolean))];
+  const el = document.getElementById("chips");
+  if (!cats.length) { el.innerHTML = ""; return; }
+  el.innerHTML = [["", "الكل"], ...cats.map(c => [c, c])]
+    .map(([v, l]) => `<button class="chip${v === cat ? " on" : ""}" data-c="${esc(v)}">${esc(l)}</button>`).join("");
+  el.querySelectorAll(".chip").forEach(b => b.onclick = () => { cat = b.dataset.c; chips(); render(); });
+}
+fetch("store.json?t=" + Date.now()).then(r => r.json()).then(d => {
+  header(d.store);
+  all = (d.apps || []).filter(a => !a.hidden && a.url);
+  const sa = all.find(a => a.package === STORE_APP);
+  if (sa) { document.getElementById("storeapp").style.display = "block"; document.getElementById("storeappLink").href = sa.url; }
+  if (d.updated) document.getElementById("foot").textContent = "آخر تحديث: " + date(d.updated);
+  chips(); render();
+}).catch(() => { document.getElementById("list").innerHTML = `<div class="empty">تعذّر تحميل المتجر</div>`; });
+document.getElementById("q").addEventListener("input", render);
+</script>
+</body>
+</html>
